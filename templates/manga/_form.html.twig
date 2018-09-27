@@ -1,0 +1,73 @@
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="form-group col-lg-6">
+        {{ form_label(form.cover) }}
+        {{ form_widget(form.cover) }}
+    </div>
+    <div class="form-group col-lg-6">
+        <p>ici une représentation de l'image selectioner (utilisation du javascript</p>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="form-group col-lg-6">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title)}}
+        {{ form_help(form.title) }}
+    </div>
+    <div class="form-group col-lg-3">
+        {{ form_label(form.year) }}
+        {{ form_widget(form.year)}}
+        {{ form_help(form.year) }}
+    </div>
+    <div class="form-group col-lg-3">
+        {{ form_label(form.type) }}
+        {{ form_widget(form.type)}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="form-group col-lg-4">
+        {{ form_label(form.auteur) }}
+        {{ form_widget(form.auteur) }}
+        {{ form_help(form.auteur) }}
+    </div>
+    <div class="form-group col-lg-2">
+        {{ form_label(form.chapTotale) }}
+        {{ form_widget(form.chapTotale) }}
+    </div>
+    <div class="form-group col-lg-3">
+        {{ form_label(form.etatsParution) }}
+        {{ form_widget(form.etatsParution) }}
+    </div>
+    <div class="form-group col-lg-3">
+        {{ form_label(form.lel) }}
+        {{ form_widget(form.lel) }}
+        {{ form_help(form.lel) }}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="form-goup col-lg-12">
+        {{ form_label(form.genres) }}
+        {{ form_widget(form.genres) }}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="form-group col-lg-12">
+        {{ form_label(form.synopsie) }}
+        {{ form_widget(form.synopsie) }}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="form-group col-6">
+        <input type="submit" class="btn btn-success btn-block" value="Enregister">
+    </div>
+    <div class="form-group col-6">
+        <a href="manga_index.html" class="btn btn-block"><i class="fas fa-chevron-left"></i> Retour à l'index</a>
+    </div>
+</div>
+{{ form_end(form) }}

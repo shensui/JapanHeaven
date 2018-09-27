@@ -1,0 +1,13 @@
+{% extends 'manga/manga_base.html.twig' %}
+
+{% block breadcrump %}
+    <li class="breadcrumb-item " aria-current="page"><a href="{{ path('manga_index') }}">Manga</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('manga_newx') }}">New</a></li>
+{% endblock %}
+
+{% block manga_body %}
+    <div class="manga_new">
+        {{ include('manga/_form.html.twig') }}
+    </div>
+{% endblock %}
+

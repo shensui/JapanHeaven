@@ -1,12 +1,107 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>Japan Heaven | {% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">o">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset("fontawesome-free-5.3.1/css/all.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/App.css") }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{{ path('core') }}">Oatku Heaven</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--<div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+                <div class="navbar-collapse collapse justify-content-md-center" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        {% block base_nave %}
+                        <a class="nav-item nav-link" href="{{ path('core') }}">Home</a>
+                        <a class="nav-item nav-link" href="{{ path('manga_index') }}">Mangas</a>
+                        <a class="nav-item nav-link" href="#">Animes</a>
+                        <a class="nav-item nav-link" href="#">Membres</a>
+                        <a class="nav-item nav-link" href="#">Administration</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="row row-section">
+            {% block body %}{% endblock %}
+        </section>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 nav-">
+                    <p>
+                        <i class="far fa-copyright" aria-hidden="true"></i> 2016 <a href="#" class="link-all">ShensuiProd</a>.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-12 nav-footer">
+                    <ul class="list-unstyled list-unstyled">
+                        <li class="list-inline-item">
+                            <a href="{{ path('core') }}">Home</a>
+                        </li>
+                        <li  class="list-inline-item">
+                            <a href="{{ path('manga_index') }}">Manga</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Anime</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Galery</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Administration</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12 social">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <span class="fa-stack">
+                              <i class="fab fa-twitter-square fa-3x"></i>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <span class="fa-stack">
+                              <i class="fab fa-facebook-square fa-3x"></i>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <span class="fa-stack">
+                              <i class="fab fa-youtube-square fa-3x"></i>
+                            </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-5.3.1/js/all.js') }}"></script>
+    <script src="{{ asset('js/App.js') }}"></script>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

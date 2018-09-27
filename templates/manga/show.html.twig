@@ -1,0 +1,42 @@
+{% extends 'manga/manga_base.html.twig' %}
+
+{% block breadcrump %}
+    <li class="breadcrumb-item " aria-current="page"><a href="{{ path('manga_index') }}">Manga</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('manga_show', {'id': manga.id, 'slug': manga.slug}) }}">{{ manga.id }}-{{ manga.slug }}</a></li>
+{% endblock %}
+
+{% block manga_body %}
+    <div class="manga_show">
+        <div class="row">
+            <div class="col-lg-4 show-img">
+                <a href="#">
+                    <img src="{{ asset(manga.cover.WebPath) }}" alt="{{ manga.cover.alt }}" class="">
+                </a>
+            </div>
+            <div class="col-lg-8 show-content">
+                <p>
+                    Titre : {{ manga.title }} <br>
+                    Année de parution : {{ manga.year }} <br>
+                    Type d'oeuvre : {{ manga.type.name }} ({{ manga.type.pays}}) <br>
+                    Auteur(s) : <a href="">moi</a>, <a href="">lui</a>, <a href="">nous</a> <br>
+                    Genre(s) : <a href="">moi</a>, <a href="">lui</a>, <a href="">nous</a> <br>
+                    Chapitre actuelle : 122 <br>
+                    Lecture en ligne : <a href="">>> c'est par ici << </a> <br>
+                    Résume de l'oeuvre : <br>
+                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="{{ path('manga_edit', {'id': manga.id, 'slug': manga.slug}) }}" class="btn btn-success btn-block">Modifier</a>
+            </div>
+            <div class="col-lg-4">
+                <a href="" class="btn btn-dark btn-block">Ajouter à ma bilbiotèque</a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ path('manga_index') }}" class="btn btn-primary btn-block">Retour</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

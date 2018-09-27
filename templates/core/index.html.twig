@@ -1,20 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block base_nave %}
+<a class="nav-item nav-link active" href="{{ path('core') }}">Home</a>
+<a class="nav-item nav-link" href="{{ path('manga_index') }}">Mangas</a>
+<a class="nav-item nav-link" href="#">Animes</a>
+<a class="nav-item nav-link" href="#">Membres</a>
+<a class="nav-item nav-link" href="#">Administration</a>
+{% endblock %}
+
+{% block title %}Home page{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/CoreController.php'|file_link(0) }}">src/Controller/CoreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/core/index.html.twig'|file_link(0) }}">templates/core/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="col-lg-4 col-sm-6 home-card">
+        <div class="menu-index">
+            <img class="rounded"
+                 src="http://ep.yimg.com/ay/animebooks-com/basic-lessons-for-japanese-manga-cartoon-drawings-reference-book-10.gif"
+                 alt="Image section manga" width="140" height="140">
+            <h2>Manga(s)</h2>
+            <p class="content">
+                cette zone regroupe l'ensemble des mangas présent et validé par les membre du site.
+                <br>
+            </p>
+            <p>
+                <a class="btn btn-primary" href="{{ path('manga_index') }}" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Entrer dans cette zone »</a>
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 home-card">
+        <div class="menu-index">
+            <img class="rounded"
+                 src="http://pa1.narvii.com/5979/87bf67acc3b8adcf7749cc301890fdb6046a5ba4_hq.gif"
+                 alt="Image section Série" width="140" height="140">
+            <h2>Série(s) / Anime(s)</h2>
+            <p class="content">
+                cette zone regroupe l'ensemble des anime et série présent et validé par les membre du site.
+                <br>
+            </p>
+            <p>
+                <a class="btn btn-primary" href="#" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Entrer dans cette zone »</a>
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 home-card">
+        <div class="menu-index">
+            <img class="rounded"
+                 src="https://pixabay.com/static/uploads/photo/2013/07/12/19/20/shinto-154572_960_720.png"
+                 alt="image galery" width="140" height="140">
+            <h2>Membre(s) et utilisateur(s)</h2>
+            <p class="content">
+                Zone réserveé aux membre du site, un compte est obligatoir pour y acceder.
+                <br>
+                l'inscription est gratuite.
+            </p>
+            <p><a class="btn btn-primary" href="#" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Entrer dans cette zone »</a></p>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 home-card">
+        <div class="menu-index">
+            <img class="rounded"
+                 src="https://pixabay.com/static/uploads/photo/2013/07/12/19/20/shinto-154572_960_720.png"
+                 alt="image galery" width="140" height="140">
+            <h2>Administration du site</h2>
+            <p class="content">
+                Zone réserveé aux membre du site, un compte est obligatoir pour y acceder.
+            </p>
+            <p><a class="btn btn-primary" href="#" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Entrer dans cette zone »</a></p>
+        </div>
+    </div>
 {% endblock %}

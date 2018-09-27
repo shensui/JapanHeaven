@@ -1,0 +1,835 @@
+{% extends 'manga/manga_base.html.twig' %}
+
+{% block breadcrump %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('manga_index') }}">Manga</a></li>
+{% endblock %}
+
+{% block manga_body %}
+    <div class="manga_index">
+        <ul class="nav nav-pills nav-fill" id="Tab_Manga" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active"  id="home-tab-num" data-toggle="tab" href="#tab_num" role="tab" aria-controls="home" aria-selected="true">#</a>
+            </li>
+            {% for item in az %}
+                <li class="nav-item">
+                    <a class="nav-link"  id="home-tab-{{ item }}" data-toggle="tab" href="#tab_{{ item }}" role="tab" aria-controls="home" aria-selected="true">{{ item|upper }}</a>
+                </li>
+            {% endfor %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('manga_new') }}"><i class="fas fa-plus"></i></a>
+            </li>
+        </ul>
+        <div class="tab-content" id="Tab_Manga_Content">
+            <div class="tab-pane fade show active" id="tab_num" role="tabpanel" aria-labelledby="num">
+                <div class="row">
+                    {% if num|length >= 1 %}
+                        {% for item in num %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_a" role="tabpanel" aria-labelledby="a">
+                <div class="row">
+                    {% if a|length >= 1 %}
+                        {% for item in a %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_b" role="tabpanel" aria-labelledby="b">
+                <div class="row">
+                    {% if b|length >= 1 %}
+                        {% for item in b %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_c" role="tabpanel" aria-labelledby="c">
+                <div class="row">
+                    {% if c|length >= 1 %}
+                        {% for item in c %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_d" role="tabpanel" aria-labelledby="d">
+                <div class="row">
+                    {% if d|length >= 1 %}
+                        {% for item in d %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_e" role="tabpanel" aria-labelledby="e">
+                <div class="row">
+                    {% if e|length >= 1 %}
+                        {% for item in e %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_f" role="tabpanel" aria-labelledby="f">
+                <div class="row">
+                    {% if f|length >= 1 %}
+                        {% for item in f %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_g" role="tabpanel" aria-labelledby="g">
+                <div class="row">
+                    {% if g|length >= 1 %}
+                        {% for item in g %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_h" role="tabpanel" aria-labelledby="h">
+                <div class="row">
+                    {% if h|length >= 1 %}
+                        {% for item in h %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_i" role="tabpanel" aria-labelledby="i">
+                <div class="row">
+                    {% if i|length >= 1 %}
+                        {% for item in i %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_j" role="tabpanel" aria-labelledby="j">
+                <div class="row">
+                    {% if j|length >= 1 %}
+                        {% for item in j %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_k" role="tabpanel" aria-labelledby="k">
+                <div class="row">
+                    {% if k|length >= 1 %}
+                        {% for item in k %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_l" role="tabpanel" aria-labelledby="l">
+                <div class="row">
+                    {% if l|length >= 1 %}
+                        {% for item in l %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_m" role="tabpanel" aria-labelledby="m">
+                <div class="row">
+                    {% if m|length >= 1 %}
+                        {% for item in m %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_n" role="tabpanel" aria-labelledby="n">
+                <div class="row">
+                    {% if n|length >= 1 %}
+                        {% for item in n %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_o" role="tabpanel" aria-labelledby="o">
+                <div class="row">
+                    {% if o|length >= 1 %}
+                        {% for item in o %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_p" role="tabpanel" aria-labelledby="p">
+                <div class="row">
+                    {% if p|length >= 1 %}
+                        {% for item in p %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_q" role="tabpanel" aria-labelledby="q">
+                <div class="row">
+                    {% if q|length >= 1 %}
+                        {% for item in q %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_r" role="tabpanel" aria-labelledby="r">
+                <div class="row">
+                    {% if r|length >= 1 %}
+                        {% for item in r %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_s" role="tabpanel" aria-labelledby="s">
+                <div class="row">
+                    {% if s|length >= 1 %}
+                        {% for item in s %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_t" role="tabpanel" aria-labelledby="t">
+                <div class="row">
+                    {% if t|length >= 1 %}
+                        {% for item in t %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_u" role="tabpanel" aria-labelledby="u">
+                <div class="row">
+                    {% if u|length >= 1 %}
+                        {% for item in u %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_v" role="tabpanel" aria-labelledby="v">
+                <div class="row">
+                    {% if v|length >= 1 %}
+                        {% for item in v %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_w" role="tabpanel" aria-labelledby="w">
+                <div class="row">
+                    {% if w|length >= 1 %}
+                        {% for item in w %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_x" role="tabpanel" aria-labelledby="x">
+                <div class="row">
+                    {% if x|length >= 1 %}
+                        {% for item in x %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_y" role="tabpanel" aria-labelledby="y">
+                <div class="row">
+                    {% if y|length >= 1 %}
+                        {% for item in y %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="tab_z" role="tabpanel" aria-labelledby="z">
+                <div class="row">
+                    {% if z|length >= 1 %}
+                        {% for item in z %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" data-src="{{ asset(item.cover.WebPath) }}" alt="{{ item.cover.alt}}" style="height: 225px; width: 100%; display: block;" src="{{ asset(item.cover.WebPath) }}" data-holder-rendered="true">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{ item.title }}
+                                            <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ path('manga_show', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="{{ path('manga_edit', {'id': item.id, 'slug': item.slug}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <small class="text-muted">{{ item.interval() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Il n'y a pas encore d'élément validé pour cette lettre.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
