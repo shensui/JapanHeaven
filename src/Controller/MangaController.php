@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Manga;
 use App\Form\MangaType;
+use App\Repository\GenreRepository;
 use App\Repository\MangaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -98,6 +99,25 @@ class MangaController extends AbstractController
      */
     public function show(Manga $manga): Response
     {
-        return $this->render('manga/show.html.twig', ['manga' => $manga]);
+        $auteur = explode(', ', $manga->getAuteur());
+
+        return $this->render('manga/show.html.twig', [
+            'manga'   => $manga,
+            'auteurs' => $auteur
+        ]);
+    }
+
+    // recherche
+
+
+    /**
+     * Function qui affiche les genres sur la colonne de gauche de la partie manga.
+     * @param GenreRepository $genreRepository
+     * @return Response
+     */
+    public function genre_leftnav(GenreRepository $genreRepository){
+        return $this->render('manga/_genrreLeftNav.html.twig',[
+            'genre' => $genreRepository->genreByAz()
+        ]);
     }
 }

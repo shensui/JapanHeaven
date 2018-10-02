@@ -15,15 +15,18 @@
             </div>
             <div class="col-lg-8 show-content">
                 <p>
-                    Titre : {{ manga.title }} <br>
-                    Année de parution : {{ manga.year }} <br>
-                    Type d'oeuvre : {{ manga.type.name }} ({{ manga.type.pays}}) <br>
-                    Auteur(s) : <a href="">moi</a>, <a href="">lui</a>, <a href="">nous</a> <br>
-                    Genre(s) : <a href="">moi</a>, <a href="">lui</a>, <a href="">nous</a> <br>
-                    Chapitre actuelle : 122 <br>
-                    Lecture en ligne : <a href="">>> c'est par ici << </a> <br>
-                    Résume de l'oeuvre : <br>
-                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                    Titre : {{ manga.title }}
+                </p>
+                <p>Année de parution : {{ manga.year }}</p>
+                <p>Type d'oeuvre : {{ manga.type.name }} ({{ manga.type.pays}})</p>
+                <p>Auteur(s) : {% for auteur in auteurs %}"<a href="">{{ auteur }}</a>"{% if not loop.last %},  {% endif %}{% endfor %}</p>
+                <p>Genre(s) : {% for genre in manga.genres %}<a href="">{{ genre.name }}</a>{% if not loop.last %},  {% endif %}{% endfor %}</p>
+                <p>Chapitre actuelle : {{ manga.chapTotale }}</p>
+                <p>Etats de Parution : {{ manga.etatsParution.name }}</p>
+                <p>Lecture en ligne : <a href="{{ manga.lel }}">>> c'est par ici << </a></p>
+                <p>
+                    Résume de l'oeuvre : <br><br>
+                    <span>{{ manga.synopsie }}</span>
                 </p>
             </div>
         </div>

@@ -19,6 +19,14 @@ class GenreRepository extends ServiceEntityRepository
         parent::__construct($registry, Genre::class);
     }
 
+    public function genreByAz(){
+        return $this->createQueryBuilder('g')
+            ->orderBy('g.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Genre[] Returns an array of Genre objects
 //     */

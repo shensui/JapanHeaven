@@ -37,14 +37,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading"> Liste des genres</div>
                 <div class="panel-body link_genre">
-                    <ul class="list-unstyled list-inline row">
-                        <li class="col-lg-4"><a href="btn btn-primary">item_1</a></li>
-                        <li class="col-lg-4"><a href="btn btn-primary">item_3ekelrklrerjl</a></li>
-                        <li class="col-lg-4"><a href="btn btn-primary">item_2</a></li>
-                        <li class="col-lg-4"><a href="btn btn-primary">item_ekelrklrerjl</a></li>
-                        <li class="col-lg-4"><a href="btn btn-primary">item_3</a></li>
-                        <li class="col-lg-4"><a href="btn btn-primary">item_ekelrklrerjl</a></li>
-                    </ul>
+                    {{ render(controller('App\\Controller\\MangaController::genre_leftnav')) }}
                 </div>
             </div>
         </div>
